@@ -16,7 +16,7 @@ const heroes = {
 
 }
 
-
+//############### Forma SIN ASYNC ###################
 export const buscarHeroe = (id) => {
 
     const heroe = heroes[id];
@@ -28,23 +28,49 @@ export const buscarHeroe = (id) => {
         } else {
             reject(`No existe en el heroe con el id ${id}`);
         }
-
     });
+}
+
+
+//############### Forma CON ASYNC ###################
+// No utiliza Promise ni el resolve ni el reject
+// Reemplaza el resolve por return 
+// Reemplaza el reject por throw 
+
+
+export const buscarHeroeAsync = async (id) => {
+
+    const heroe = heroes[id];
+
+    //   return new Promise((resolve, reject) => {
+
+    if (heroe) {
+        return heroe;
+    } else {
+        throw (`No existe en el heroe con el id ${id}`);
+      //  throw Error (`No existe en el heroe con el id ${id}`);   // Devuelve detalle del error
+    }
+
+//    });
 
 }
 
 
 
-const promesaLenta = new Promise((resolve,reject) => {
-    setTimeout(()=> resolve('Promsesa Lenta'),3000);
+
+
+
+//###############   PROMESAS . RACE
+const promesaLenta = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Promsesa Lenta'), 3000);
 });
 
-const promesaMedia = new Promise((resolve,reject) => {
-    setTimeout(()=> resolve('Promsesa Media'),2000);
+const promesaMedia = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Promsesa Media'), 2000);
 });
 
-const promesaRapida = new Promise((resolve,reject) => {
-    setTimeout(()=> reject('Promsesa Rapida'),1000);
+const promesaRapida = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('Promsesa Rapida'), 1000);
 });
 
-export {promesaLenta ,promesaMedia,promesaRapida};
+export { promesaLenta, promesaMedia, promesaRapida };
