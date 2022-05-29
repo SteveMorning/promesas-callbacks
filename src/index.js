@@ -4,15 +4,20 @@ import './styles.css';
 
 
 
-const heroeId = 'capi';
+const heroeId = 'capis';
 
-buscarheroe(heroeId, (heroe) => {
+buscarheroe(heroeId, (err, heroe) => {
 
-    console.log('CallBack llamado!');
-    console.log(heroeId);
-    console.log(heroe);
+    console.table({ err, heroe });
 
-}
-);
+    if (err) {
+        console.error(err);
+
+    } else {
+        console.info(heroeId);
+        console.info(heroe);
+        console.info(heroe.nombre, heroe.poder);
+    }
+});
 
 console.log('Fin del Programa');
