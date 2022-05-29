@@ -32,3 +32,19 @@ export const buscarHeroe = (id) => {
     });
 
 }
+
+
+
+const promesaLenta = new Promise((resolve,reject) => {
+    setTimeout(()=> resolve('Promsesa Lenta'),3000);
+});
+
+const promesaMedia = new Promise((resolve,reject) => {
+    setTimeout(()=> resolve('Promsesa Media'),2000);
+});
+
+const promesaRapida = new Promise((resolve,reject) => {
+    setTimeout(()=> reject('Promsesa Rapida'),1000);
+});
+
+export {promesaLenta ,promesaMedia,promesaRapida};
