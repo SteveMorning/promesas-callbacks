@@ -16,20 +16,19 @@ const heroes = {
 
 }
 
-// se documenta los argumentos que retorna el callback
-export const buscarHeroe = (id, callback) => {
+
+export const buscarHeroe = (id) => {
 
     const heroe = heroes[id];
 
-    if (heroe) {
-        callback(null,heroe);
-    }
-    else {
-        callback(`No existe en el heroe con el id ${id}`);
-    };
+    return new Promise((resolve, reject) => {
 
+        if (heroe) {
+            resolve(heroe);
+        } else {
+            reject(`No existe en el heroe con el id ${id}`);
+        }
 
-    //callback(heroe);
+    });
 
 }
-
