@@ -4,20 +4,23 @@ import './styles.css';
 
 
 
-const heroeId = 'capis';
+const heroeId1 = 'capi';
+const heroeId2 = 'iron';
 
-buscarheroe(heroeId, (err, heroe) => {
+// Al tener varias variables se vuelve un problema con manejar los CALLBACK  
+// por que se llama una funcion dentro otra
 
-    console.table({ err, heroe });
+buscarheroe(heroeId1, (err, heroe1) => {
+    console.table({ err, heroe1 });
+    if (err) { return console.error(err); }
 
-    if (err) {
-        console.error(err);
+    buscarheroe(heroeId2, (err, heroe2) => {
+        console.table({ err, heroe2 });
+        if (err) { return console.error(err); }
+        console.log(`Enviando a ${heroe1.nombre} y a ${heroe2.nombre} a la mision`);
+    })
 
-    } else {
-        console.info(heroeId);
-        console.info(heroe);
-        console.info(heroe.nombre, heroe.poder);
-    }
+
 });
 
 console.log('Fin del Programa');
