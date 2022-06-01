@@ -24,11 +24,19 @@ buscarHeroeAsync('irond').then(console.log)
 */
 
 
+console.time('await');
 //para el away se usa asi
-obtenerHeroesArr().then(console.table);
+//obtenerHeroesArr().then(console.table);
+obtenerHeroesArr().then(heroes => {
+    console.table(heroes);
+    console.timeEnd('await');
+}
+   
+);
+
 
 //sin el away se usa asi y con el settimeout
-const heroes =  obtenerHeroesArr();
+const heroes = obtenerHeroesArr();
 
 console.log(heroes);
 console.table(heroes);
