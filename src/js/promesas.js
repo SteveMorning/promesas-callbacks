@@ -48,7 +48,8 @@ export const buscarHeroeAsync = async (id) => {
         return heroe;
     } else {
         throw (`No existe en el heroe con el id ${id}`);
-      //  throw Error (`No existe en el heroe con el id ${id}`);   // Devuelve detalle del error
+      //  throw Error (`No existe en el heroe con el id ${id}`);   
+      // Devuelve detalle del error
     }
 
 //    });
