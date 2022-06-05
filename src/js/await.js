@@ -1,8 +1,10 @@
+import { ids } from "webpack";
 import { buscarHeroe, buscarHeroeAsync  } from "./promesas";
 
 const heroesIds = ['capi', 'iron', 'spider'];
 
 export const obtenerHeroesArr = async () => {  //se pone async y se agrega el await
+ /*
     const heroesArr = [];
 
     for (const id of heroesIds) {
@@ -19,7 +21,7 @@ export const obtenerHeroesArr = async () => {  //se pone async y se agrega el aw
         heroesArr.push(buscarHeroe(id));
     }
 
-
+*/
     // Version aun mas optimizada
     return  await Promise.all( heroesIds.map (buscarHeroe));
 // Version master of the universe
@@ -34,14 +36,27 @@ export const obtenerHeroesArr = async () => {  //se pone async y se agrega el aw
         }, 1000);
      */
 
-      return heroesArr;
+/*      return heroesArr;
     
       // esta es la version optimizada
       return await Promise.all(heroesArr) ;
+*/
+  
+};
 
+export const obtenerHeroeAwait = async (id)=> {
+
+    try{
+        const heroe = await buscarHeroeAsync(id);
+        return heroe;  
+    }
+    catch(err){
+        console.log('CATCH');
+        throw err;
+
+    }
   
 
-
-
+    
 
 };

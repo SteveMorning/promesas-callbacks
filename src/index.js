@@ -1,4 +1,4 @@
-import { obtenerHeroesArr } from "./js/await";
+import { obtenerHeroeAwait, obtenerHeroesArr } from "./js/await";
 import { buscarHeroe, buscarHeroeAsync, promesaLenta, promesaMedia, promesaRapida } from "./js/promesas";
 
 /*
@@ -41,5 +41,9 @@ const heroes = obtenerHeroesArr();
 console.log(heroes);
 console.table(heroes);
 
-
+obtenerHeroeAwait('capi')
+    .then(heroe => {
+        console.log(heroe);
+        console.timeEnd('await');
+     }).catch(console.warn);
 
